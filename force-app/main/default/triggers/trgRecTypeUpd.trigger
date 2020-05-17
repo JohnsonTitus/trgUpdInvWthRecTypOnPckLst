@@ -2,7 +2,7 @@ trigger trgRecTypeUpd on Invoice__c (before insert) {
 
     //create a map of Record that maps Name to Id
     Map<String,RecordType> mapRecordtype = new Map<String,RecordType>();
-    for(RecordType r : [select DeveloperName, id from RecordType]){
+    for(RecordType r : [select DeveloperName, id from RecordType where sObjectType = Invoice__c]){
         mapRecordtype.put(r.DeveloperName, r);
     }
     
